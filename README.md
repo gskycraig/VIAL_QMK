@@ -1,10 +1,10 @@
 
 VIAL compile:
 
-qmk compile -kb Nostra_ansi -km vial
-qmk compile -kb Nostra_iso -km vial
-qmk compile -kb Nova_ansi -km vial
-qmk compile -kb Nova_iso -km vial
+qmk compile -kb nostra_ansi -km vial
+qmk compile -kb nostra_iso -km vial
+qmk compile -kb nova_ansi -km vial
+qmk compile -kb nova_iso -km vial
 
 
 
