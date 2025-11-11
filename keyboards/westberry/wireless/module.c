@@ -47,7 +47,7 @@
 #endif
 
 #ifndef MD_DONGLE_PRODUCT
-#    define MD_DONGLE_PRODUCT PRODUCT " Dongle"
+#    define MD_DONGLE_PRODUCT PRODUCT " 2.4G"
 #endif
 
 #ifndef MD_RAW_SIZE
@@ -63,6 +63,7 @@ typedef struct
     uint8_t indicator;
     uint8_t version;
     uint8_t bat;
+    uint8_t qbat;
 } md_info_t;
 
 static uint8_t md_pkt_payload[MD_SEND_PKT_PAYLOAD_MAX] = {0};
@@ -71,6 +72,7 @@ static uint8_t md_raw_payload[MD_RAW_SIZE]             = {0};
 
 static md_info_t md_info = {
     .bat       = 100,
+    .qbat      = 100,
     .indicator = 0,
     .version   = 0,
     .state     = MD_STATE_NONE,
@@ -132,6 +134,7 @@ static void md_receive_msg_task(void) {
                     case MD_REV_CMD_INDICATOR:
                     case MD_REV_CMD_DEVCTRL:
                     case MD_REV_CMD_BATVOL:
+                     case MD_REV_CMD_QBAT:
                     case MD_REV_CMD_MD_FW_VERSION:
                     case MD_REV_CMD_HOST_STATE:
                     case 0x61: {
@@ -220,6 +223,9 @@ static void md_receive_msg_task(void) {
                 case MD_REV_CMD_BATVOL: {
                     md_info.bat = md_rev_payload[1];
                 } break;
+                case MD_REV_CMD_QBAT: {
+                    md_info.qbat = md_rev_payload[1];
+                } break;
                 case MD_REV_CMD_MD_FW_VERSION: {
                     md_info.version = md_rev_payload[1];
                 } break;
@@ -291,6 +297,11 @@ uint8_t *md_getp_state(void) {
 uint8_t *md_getp_bat(void) {
 
     return &md_info.bat;
+}
+
+uint8_t *md_getp_qbat(void) {
+
+    return &md_info.qbat;
 }
 
 uint8_t *md_getp_indicator(void) {
@@ -529,7 +540,8 @@ bool md_inquire_bat(void) {
         return false;
     }
 
-    md_send_devctrl(MD_SND_CMD_DEVCTRL_INQVOL);
+   // md_send_devctrl(MD_SND_CMD_DEVCTRL_INQVOL);
+    md_send_devctrl(MD_SND_CMD_DEVCTRL_QVOL);
 
     return true;
 }

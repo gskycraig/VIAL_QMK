@@ -74,6 +74,7 @@ enum {
     MD_SND_CMD_DEVCTRL_CHARGING_STOP      = 0x65, // battery power control.
     MD_SND_CMD_DEVCTRL_CHARGING_DONE      = 0x66, // battery power control.
     MD_SND_CMD_DEVCTRL_FW_VERSION         = 0x70, // module fw version.
+    MD_SND_CMD_DEVCTRL_QVOL               = 0x71, // qvol.
     MD_SND_CMD_INVALID_DATA               = 0x00, // unused
     /* bat send */
     MD_SND_CMD_SNDBAT                     = 0xA7,
@@ -97,6 +98,7 @@ enum {
     MD_REV_CMD_DEVCTRL_MD_WAKEUP    = 0x42, // unused
     MD_REV_CMD_DEVCTRL_CLS_UART     = 0x43, // unused
     MD_REV_CMD_BATVOL               = 0x5C,
+    MD_REV_CMD_QBAT                 = 0x5E,
     MD_REV_CMD_MD_FW_VERSION        = 0x5D,
     MD_REV_CMD_HOST_STATE           = 0x60,
     MD_REV_CMD_HOST_STATE_SUSPEND   = 0x00,
@@ -124,4 +126,5 @@ bool md_inquire_bat(void);
 uint8_t md_get_version(void);
 uint8_t *md_getp_state(void);
 uint8_t *md_getp_bat(void);
+uint8_t *md_getp_qbat(void);
 uint8_t *md_getp_indicator(void);

@@ -7,7 +7,7 @@
 #include "usb_main.h"
 
 #ifndef LPWR_TIMEOUT
-#    define LPWR_TIMEOUT 300000 // 5min
+#    define LPWR_TIMEOUT 180000 // 3min
 #endif
 
 #ifndef LPWR_PRESLEEP_DELAY
