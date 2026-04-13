@@ -1,0 +1,63 @@
+// Copyright 2024 Su (@isuua)
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+#pragma once
+
+// #ifdef WIRELESS_ENABLE
+// #    define LPWR_TIMEOUT RGB_MATRIX_TIMEOUT
+// #endif
+
+#define USB_POWER_EN_PIN C13
+#define LED_POWER_EN_PIN B13
+#define MM_2G4_DEF_PIN C14
+#define MM_BT_DEF_PIN C15
+#define USB_CABLE_IN_PIN B9
+#define CHRG_PIN C7
+
+#define RGB_MATRIX_BAT_INDEX_MAP { 68, 69,  70,  71,  72,  73 }
+
+/* User */
+#define MATRIX_IO_DELAY 2
+
+/* UART */
+#define UART_TX_PIN C10
+#define UART_RX_PIN C11
+#define UART_DRIVER SD3  
+
+/* Encoder */
+#define ENCODER_MAP_KEY_DELAY 1
+
+/* SPI */
+#define SPI_DRIVER SPIDQ
+#define SPI_SCK_PIN A5
+#define SPI_MOSI_PIN A7
+#define SPI_MISO_PIN A6
+
+/* Flash */
+#define EXTERNAL_FLASH_SPI_SLAVE_SELECT_PIN B14
+#define WEAR_LEVELING_LOGICAL_SIZE (WEAR_LEVELING_BACKING_SIZE / 2)
+
+/* RGB Matrix */
+#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
+#define RGB_MATRIX_KEYPRESSES
+
+/* WS2812 */
+#define WS2812_SPI_DRIVER SPIDM2
+#define WS2812_SPI_DIVISOR 32
+
+/* It is not mandatory to configure; adjust according to the datasheet of WS2812 LEDs. */
+#define WS2812_TIMING 1500
+#define WS2812_T1H 1200
+#define WS2812_T0H 400
+
+#define IM_MM_RGB_BLINK_INDEX_BT1 34
+#define IM_MM_RGB_BLINK_INDEX_BT2 33
+#define IM_MM_RGB_BLINK_INDEX_BT3 32
+#define IM_MM_RGB_BLINK_INDEX_2G4 31
+#define IM_MM_RGB_BLINK_INDEX_USB 30
+
+#define MD_BT1_NAME "IO Custom 68 BT1"
+#define MD_BT2_NAME "IO Custom 68 BT2"
+#define MD_BT3_NAME "IO Custom 68 BT3"
+#define MD_DONGLE_PRODUCT "IO Custom 68 2.4G"
+#define MD_DONGLE_MANUFACTURER "IO Custom 68"
